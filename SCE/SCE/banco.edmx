@@ -1,0 +1,319 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="SCEModel.Store" Provider="MySql.Data.MySqlClient" ProviderManifestToken="5.1" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="categoria">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="descricao" Type="varchar" MaxLength="45" />
+          <Property Name="ativo" Type="varchar" MaxLength="1" />
+        </EntityType>
+        <EntityType Name="fornecedor">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="nome" Type="varchar" MaxLength="80" />
+          <Property Name="cnpj" Type="varchar" MaxLength="18" />
+          <Property Name="telefone" Type="varchar" MaxLength="15" />
+          <Property Name="celular" Type="varchar" MaxLength="15" />
+          <Property Name="email" Type="varchar" MaxLength="80" />
+          <Property Name="ativo" Type="varchar" MaxLength="1" />
+        </EntityType>
+        <EntityType Name="listafornecedores">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="podutoID" Type="int" />
+          <Property Name="fornecedorID" Type="int" />
+        </EntityType>
+        <EntityType Name="pedidos">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="data" Type="datetime" Precision="0" Nullable="false" />
+          <Property Name="usuario" Type="varchar" MaxLength="50" />
+          <Property Name="tipo" Type="varchar" MaxLength="1" />
+        </EntityType>
+        <EntityType Name="pedidosdetalhes">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="pedidoID" Type="int" Nullable="false" />
+          <Property Name="produtoID" Type="int" />
+          <Property Name="quantidade" Type="int" />
+          <Property Name="custo" Type="double" />
+        </EntityType>
+        <EntityType Name="produto">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="codigo" Type="varchar" MaxLength="7" Nullable="false" />
+          <Property Name="descricao" Type="varchar" MaxLength="80" />
+          <Property Name="categoriaID" Type="int" />
+          <Property Name="quantidade" Type="int" />
+          <Property Name="custo" Type="double" />
+          <Property Name="custoMedio" Type="double" />
+          <Property Name="classfiscal" Type="varchar" MaxLength="8" />
+          <Property Name="peso" Type="double" />
+          <Property Name="estrutura" Type="bool" />
+          <Property Name="importado" Type="bool" />
+          <Property Name="ativo" Type="varchar" MaxLength="1" />
+        </EntityType>
+        <EntityType Name="usuario">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="nome" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="senha" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="ativo" Type="varchar" MaxLength="1" Nullable="false" />
+        </EntityType>
+        <Association Name="fk_pedidos">
+          <End Role="pedidos" Type="Self.pedidos" Multiplicity="1" />
+          <End Role="pedidosdetalhes" Type="Self.pedidosdetalhes" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="pedidos">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="pedidosdetalhes">
+              <PropertyRef Name="pedidoID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="SCEModelStoreContainer">
+          <EntitySet Name="categoria" EntityType="Self.categoria" Schema="sce" store:Type="Tables" />
+          <EntitySet Name="fornecedor" EntityType="Self.fornecedor" Schema="sce" store:Type="Tables" />
+          <EntitySet Name="listafornecedores" EntityType="Self.listafornecedores" Schema="sce" store:Type="Tables" />
+          <EntitySet Name="pedidos" EntityType="Self.pedidos" Schema="sce" store:Type="Tables" />
+          <EntitySet Name="pedidosdetalhes" EntityType="Self.pedidosdetalhes" Schema="sce" store:Type="Tables" />
+          <EntitySet Name="produto" EntityType="Self.produto" Schema="sce" store:Type="Tables" />
+          <EntitySet Name="usuario" EntityType="Self.usuario" Schema="sce" store:Type="Tables" />
+          <AssociationSet Name="fk_pedidos" Association="Self.fk_pedidos">
+            <End Role="pedidos" EntitySet="pedidos" />
+            <End Role="pedidosdetalhes" EntitySet="pedidosdetalhes" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="SCEModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="usuario">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="nome" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="senha" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ativo" Type="String" Nullable="false" MaxLength="1" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityContainer Name="bancoSCE" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="usuario" EntityType="Self.usuario" />
+          <EntitySet Name="fornecedor" EntityType="SCEModel.fornecedor" />
+          <EntitySet Name="produto" EntityType="SCEModel.produto" />
+          <EntitySet Name="listafornecedores" EntityType="SCEModel.listafornecedores" />
+          <EntitySet Name="categoria" EntityType="SCEModel.categoria" />
+          <EntitySet Name="pedidos" EntityType="SCEModel.pedidos" />
+          <EntitySet Name="pedidosdetalhes" EntityType="SCEModel.pedidosdetalhes" />
+          <AssociationSet Name="fk_pedidos" Association="SCEModel.fk_pedidos">
+            <End Role="pedidos" EntitySet="pedidos" />
+            <End Role="pedidosdetalhes" EntitySet="pedidosdetalhes" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="fornecedor">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" />
+          <Property Name="nome" Type="String" MaxLength="80" FixedLength="false" Unicode="false" />
+          <Property Name="cnpj" Type="String" MaxLength="18" FixedLength="false" Unicode="false" />
+          <Property Name="telefone" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="celular" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="email" Type="String" MaxLength="80" FixedLength="false" Unicode="false" />
+          <Property Name="ativo" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="produto">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="codigo" Type="String" Nullable="false" MaxLength="7" FixedLength="false" Unicode="false" />
+          <Property Name="descricao" Type="String" MaxLength="80" FixedLength="false" Unicode="false" />
+          <Property Name="categoriaID" Type="Int32" />
+          <Property Name="quantidade" Type="Int32" />
+          <Property Name="custo" Type="Double" />
+          <Property Name="custoMedio" Type="Double" />
+          <Property Name="classfiscal" Type="String" MaxLength="8" FixedLength="false" Unicode="false" />
+          <Property Name="peso" Type="Double" />
+          <Property Name="estrutura" Type="Boolean" />
+          <Property Name="importado" Type="Boolean" />
+          <Property Name="ativo" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="listafornecedores">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="podutoID" Type="Int32" />
+          <Property Name="fornecedorID" Type="Int32" />
+        </EntityType>
+        <EntityType Name="categoria">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="descricao" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+          <Property Name="ativo" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="pedidos">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="data" Type="DateTime" Nullable="false" />
+          <Property Name="usuario" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="pedidosdetalhes" Relationship="SCEModel.fk_pedidos" FromRole="pedidos" ToRole="pedidosdetalhes" />
+          <Property Name="tipo" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="pedidosdetalhes">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="pedidoID" Type="Int32" Nullable="false" />
+          <Property Name="produtoID" Type="Int32" />
+          <NavigationProperty Name="pedidos" Relationship="SCEModel.fk_pedidos" FromRole="pedidosdetalhes" ToRole="pedidos" />
+          <Property Name="quantidade" Type="Int32" />
+          <Property Name="custo" Type="Double" />
+        </EntityType>
+        <Association Name="fk_pedidos">
+          <End Type="SCEModel.pedidos" Role="pedidos" Multiplicity="1" />
+          <End Type="SCEModel.pedidosdetalhes" Role="pedidosdetalhes" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="pedidos">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="pedidosdetalhes">
+              <PropertyRef Name="pedidoID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="SCEModelStoreContainer" CdmEntityContainer="bancoSCE">
+          <EntitySetMapping Name="usuario">
+            <EntityTypeMapping TypeName="SCEModel.usuario">
+              <MappingFragment StoreEntitySet="usuario">
+                <ScalarProperty Name="ativo" ColumnName="ativo" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="nome" ColumnName="nome" />
+                <ScalarProperty Name="senha" ColumnName="senha" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="fornecedor">
+            <EntityTypeMapping TypeName="SCEModel.fornecedor">
+              <MappingFragment StoreEntitySet="fornecedor">
+                <ScalarProperty Name="ativo" ColumnName="ativo" />
+                <ScalarProperty Name="email" ColumnName="email" />
+                <ScalarProperty Name="celular" ColumnName="celular" />
+                <ScalarProperty Name="telefone" ColumnName="telefone" />
+                <ScalarProperty Name="cnpj" ColumnName="cnpj" />
+                <ScalarProperty Name="nome" ColumnName="nome" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="produto">
+            <EntityTypeMapping TypeName="SCEModel.produto">
+              <MappingFragment StoreEntitySet="produto">
+                <ScalarProperty Name="ativo" ColumnName="ativo" />
+                <ScalarProperty Name="importado" ColumnName="importado" />
+                <ScalarProperty Name="estrutura" ColumnName="estrutura" />
+                <ScalarProperty Name="peso" ColumnName="peso" />
+                <ScalarProperty Name="classfiscal" ColumnName="classfiscal" />
+                <ScalarProperty Name="custoMedio" ColumnName="custoMedio" />
+                <ScalarProperty Name="custo" ColumnName="custo" />
+                <ScalarProperty Name="quantidade" ColumnName="quantidade" />
+                <ScalarProperty Name="categoriaID" ColumnName="categoriaID" />
+                <ScalarProperty Name="descricao" ColumnName="descricao" />
+                <ScalarProperty Name="codigo" ColumnName="codigo" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="listafornecedores">
+            <EntityTypeMapping TypeName="SCEModel.listafornecedores">
+              <MappingFragment StoreEntitySet="listafornecedores">
+                <ScalarProperty Name="fornecedorID" ColumnName="fornecedorID" />
+                <ScalarProperty Name="podutoID" ColumnName="podutoID" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="categoria">
+            <EntityTypeMapping TypeName="SCEModel.categoria">
+              <MappingFragment StoreEntitySet="categoria">
+                <ScalarProperty Name="ativo" ColumnName="ativo" />
+                <ScalarProperty Name="descricao" ColumnName="descricao" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="pedidos">
+            <EntityTypeMapping TypeName="SCEModel.pedidos">
+              <MappingFragment StoreEntitySet="pedidos">
+                <ScalarProperty Name="tipo" ColumnName="tipo" />
+                <ScalarProperty Name="usuario" ColumnName="usuario" />
+                <ScalarProperty Name="data" ColumnName="data" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="pedidosdetalhes">
+            <EntityTypeMapping TypeName="SCEModel.pedidosdetalhes">
+              <MappingFragment StoreEntitySet="pedidosdetalhes">
+                <ScalarProperty Name="custo" ColumnName="custo" />
+                <ScalarProperty Name="quantidade" ColumnName="quantidade" />
+                <ScalarProperty Name="produtoID" ColumnName="produtoID" />
+                <ScalarProperty Name="pedidoID" ColumnName="pedidoID" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="true" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

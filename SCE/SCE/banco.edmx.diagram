@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="50a70cdc52084360ace7e1112fb2a845" Name="Diagram1" ZoomLevel="100">
+        <EntityTypeShape EntityType="SCEModel.usuario" Width="1.5" PointX="0.5" PointY="0.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="SCEModel.fornecedor" Width="1.5" PointX="7.625" PointY="0.5" />
+        <EntityTypeShape EntityType="SCEModel.estrutura" Width="1.5" PointX="0.5" PointY="3.5" />
+        <EntityTypeShape EntityType="SCEModel.produto" Width="1.5" PointX="5" PointY="3.375" />
+        <EntityTypeShape EntityType="SCEModel.listafornecedores" Width="1.5" PointX="7.625" PointY="3.125" />
+        <EntityTypeShape EntityType="SCEModel.categoria" Width="1.5" PointX="2.875" PointY="3.375" />
+        <EntityTypeShape EntityType="SCEModel.pedidos" Width="1.5" PointX="2.25" PointY="0.5" />
+        <EntityTypeShape EntityType="SCEModel.pedidosdetalhes" Width="1.5" PointX="4.75" PointY="0.5" />
+        <AssociationConnector Association="SCEModel.fk_pedidos" />
+        </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

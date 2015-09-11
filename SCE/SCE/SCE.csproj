@@ -1,0 +1,334 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{24FA3E7A-38AA-47B0-9EB1-11B297DD73F0}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>SCE</RootNamespace>
+    <AssemblyName>SCE</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <PublishUrl>\\gw001\publico\SCE\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Unc</InstallFrom>
+    <UpdateEnabled>true</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <UpdateUrl>\\gw001\Publico\SCE\</UpdateUrl>
+    <ProductName>Sistema de Cadastro de Estoque</ProductName>
+    <PublisherName>GWork Consultoria e Sistemas</PublisherName>
+    <SuiteName>SCE</SuiteName>
+    <AutorunEnabled>true</AutorunEnabled>
+    <ApplicationRevision>308</ApplicationRevision>
+    <ApplicationVersion>1.1.6.%2a</ApplicationVersion>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <CreateDesktopShortcut>true</CreateDesktopShortcut>
+    <PublishWizardCompleted>true</PublishWizardCompleted>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>favicon.ico</ApplicationIcon>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ManifestCertificateThumbprint>B0C21602C240262BC93970E4D0ACD2D0849EFADA</ManifestCertificateThumbprint>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ManifestKeyFile>SCE_TemporaryKey.pfx</ManifestKeyFile>
+  </PropertyGroup>
+  <PropertyGroup>
+    <GenerateManifests>true</GenerateManifests>
+  </PropertyGroup>
+  <PropertyGroup>
+    <SignManifests>false</SignManifests>
+  </PropertyGroup>
+  <PropertyGroup />
+  <PropertyGroup>
+    <TargetZone>LocalIntranet</TargetZone>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationManifest>Properties\app.manifest</ApplicationManifest>
+  </PropertyGroup>
+  <PropertyGroup>
+    <SignAssembly>false</SignAssembly>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework, Version=5.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.5.0.0\lib\net45\EntityFramework.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="MySql.Data, Version=6.9.6.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.Entity" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="AddUsuario.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>AddUsuario.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="AddUsuario.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>AddUsuario.tt</DependentUpon>
+    </Compile>
+    <Compile Include="banco.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>banco.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="banco.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>banco.tt</DependentUpon>
+    </Compile>
+    <Compile Include="banco.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>banco.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="categoria.cs">
+      <DependentUpon>banco.tt</DependentUpon>
+    </Compile>
+    <Compile Include="listafornecedores.cs">
+      <DependentUpon>banco.tt</DependentUpon>
+    </Compile>
+    <Compile Include="pedidos.cs">
+      <DependentUpon>banco.tt</DependentUpon>
+    </Compile>
+    <Compile Include="pedidosdetalhes.cs">
+      <DependentUpon>banco.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Pesquisas\lookupFornecedor.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Pesquisas\lookupFornecedor.Designer.cs">
+      <DependentUpon>lookupFornecedor.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Pesquisas\lookupPedido.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Pesquisas\lookupPedido.Designer.cs">
+      <DependentUpon>lookupPedido.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Pesquisas\lookupProduto.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Pesquisas\lookupProduto.Designer.cs">
+      <DependentUpon>lookupProduto.cs</DependentUpon>
+    </Compile>
+    <Compile Include="produto.cs">
+      <DependentUpon>banco.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Telas\cadFornecedor.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Telas\cadFornecedor.Designer.cs">
+      <DependentUpon>cadFornecedor.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Telas\cadPedidos.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Telas\cadPedidos.Designer.cs">
+      <DependentUpon>cadPedidos.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Telas\cadProduto.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Telas\cadProduto.Designer.cs">
+      <DependentUpon>cadProduto.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Telas\cadUsuario.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Telas\cadUsuario.Designer.cs">
+      <DependentUpon>cadUsuario.cs</DependentUpon>
+    </Compile>
+    <Compile Include="fornecedor.cs">
+      <DependentUpon>banco.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Pesquisas\lookupUsuarios.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Pesquisas\lookupUsuarios.Designer.cs">
+      <DependentUpon>lookupUsuarios.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Sessao.cs" />
+    <Compile Include="Telas\telainicial.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Telas\telainicial.Designer.cs">
+      <DependentUpon>telainicial.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Telas\login.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Telas\login.Designer.cs">
+      <DependentUpon>login.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="usuario.cs">
+      <DependentUpon>banco.tt</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="Pesquisas\lookupFornecedor.resx">
+      <DependentUpon>lookupFornecedor.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Pesquisas\lookupPedido.resx">
+      <DependentUpon>lookupPedido.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Pesquisas\lookupProduto.resx">
+      <DependentUpon>lookupProduto.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Telas\cadFornecedor.resx">
+      <DependentUpon>cadFornecedor.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Telas\cadPedidos.resx">
+      <DependentUpon>cadPedidos.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Telas\cadProduto.resx">
+      <DependentUpon>cadProduto.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Telas\cadUsuario.resx">
+      <DependentUpon>cadUsuario.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Pesquisas\lookupUsuarios.resx">
+      <DependentUpon>lookupUsuarios.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Telas\telainicial.resx">
+      <DependentUpon>telainicial.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Telas\login.resx">
+      <DependentUpon>login.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <EntityDeploy Include="banco.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>banco.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <None Include="AddUsuario.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>AddUsuario.Context.cs</LastGenOutput>
+      <DependentUpon>banco.edmx</DependentUpon>
+    </None>
+    <None Include="AddUsuario.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>AddUsuario.cs</LastGenOutput>
+      <DependentUpon>banco.edmx</DependentUpon>
+    </None>
+    <None Include="banco.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>banco.edmx</DependentUpon>
+      <LastGenOutput>banco.Context.cs</LastGenOutput>
+    </None>
+    <None Include="banco.edmx.diagram">
+      <DependentUpon>banco.edmx</DependentUpon>
+    </None>
+    <None Include="banco.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>banco.edmx</DependentUpon>
+      <LastGenOutput>banco.cs</LastGenOutput>
+    </None>
+    <None Include="packages.config" />
+    <None Include="Properties\app.manifest" />
+    <None Include="Properties\DataSources\bancoSCE.datasource" />
+    <None Include="Properties\DataSources\cadUsuario.datasource" />
+    <None Include="Properties\DataSources\login.datasource" />
+    <None Include="Properties\DataSources\Program.datasource" />
+    <None Include="Properties\DataSources\SCE.Properties.Resources.datasource" />
+    <None Include="Properties\DataSources\SCE.Properties.Settings.datasource" />
+    <None Include="Properties\DataSources\telainicial.datasource" />
+    <None Include="Properties\DataSources\usuario.datasource" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include=".NETFramework,Version=v4.5">
+      <Visible>False</Visible>
+      <ProductName>Microsoft .NET Framework 4.5 %28x86 and x64%29</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Client.3.5">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1 Client Profile</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="favicon.ico" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
